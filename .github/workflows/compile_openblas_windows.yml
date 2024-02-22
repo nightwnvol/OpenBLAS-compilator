@@ -26,3 +26,10 @@ jobs:
           cd build
           cmake .. -G "Ninja" -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_C_COMPILER=clang-cl -DCMAKE_Fortran_COMPILER=flang-new -DCMAKE_MT=mt -DBUILD_WITHOUT_LAPACK=no -DNOFORTRAN=0 -DDYNAMIC_ARCH=ON -DCMAKE_BUILD_TYPE=Release
           cmake --build . --config Release
+          mkdir C:\artifacts
+          cmake --install . --prefix C:\artifacts
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          path: C:\artifacts
