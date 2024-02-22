@@ -22,7 +22,7 @@ jobs:
           conda update -n base conda
           conda config --add channels conda-forge
           conda install -y cmake flang clangdev perl libflang ninja
-          "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\vc\Auxiliary\Build\vcvars64.bat"
+          & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat'
           link
           conda activate
           link
