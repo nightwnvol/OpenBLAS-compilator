@@ -9,15 +9,15 @@ jobs:
       - name: Compile
         continue-on-error: true
         run: |
-          ls C:\MiniConda\Library\lib
-          ls C:\MiniConda\Library\include
-          & 'C:\Miniconda\shell\condabin\conda-hook.ps1'
+          cd 'C:\Miniconda\shell\condabin'
+          .\conda-hook.ps1
           conda update -n base conda
           conda config --add channels conda-forge
           conda install -y cmake flang clangdev perl libflang ninja
           conda activate
-          & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat'
-          link
+          cd 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build'
+          .\vcvars64.bat
+          cd C:\
           git clone https://github.com/OpenMathLib/OpenBLAS.git
           cd OpenBLAS
           $env:LIB = "$env:CONDA_PREFIX\Library\lib;$env:LIB"
