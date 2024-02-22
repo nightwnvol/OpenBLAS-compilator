@@ -10,6 +10,7 @@ jobs:
         continue-on-error: true
         run: |
           ls C:\
+          ls "C:\Program Files\Microsoft Visual Studio\2022\Preview\vc\Auxiliary\Build\"
           C:\Miniconda\shell\condabin\conda-hook.ps1
           conda update -n base conda
           conda config --add channels conda-forge
