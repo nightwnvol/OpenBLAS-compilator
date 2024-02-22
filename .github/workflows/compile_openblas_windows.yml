@@ -9,18 +9,22 @@ jobs:
       - name: Compile
         continue-on-error: true
         run: |
-          ls C:\Miniconda\shell
-          ls C:\Miniconda\shell\condabin
+          ls C:\
           C:\Miniconda\shell\condabin\conda-hook.ps1
           conda update -n base conda
           conda config --add channels conda-forge
           conda install -y cmake flang clangdev perl libflang ninja
-          "c:\Program Files\Microsoft Visual Studio\2022\Preview\vc\Auxiliary\Build\vcvars64.bat"
+          "C:\Program Files\Microsoft Visual Studio\2022\Preview\vc\Auxiliary\Build\vcvars64.bat"
           git clone https://github.com/OpenMathLib/OpenBLAS.git
           cd OpenBLAS
+          echo $env:CONDA_PREFIX
           $env:LIB = "$env:CONDA_PREFIX\Library\lib;$env:LIB"
           $env:CPATH = "$env:CONDA_PREFIX\Library\include;$env:CPATH"
+          echo $env:LIB
+          echo $env:CPATH
           mkdir build
           cd build
           cmake .. -G "Ninja" -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_C_COMPILER=clang-cl -DCMAKE_Fortran_COMPILER=flang -DCMAKE_MT=mt -DBUILD_WITHOUT_LAPACK=no -DNOFORTRAN=0 -DDYNAMIC_ARCH=ON -DCMAKE_BUILD_TYPE=Release
           cmake --build . --config Release
+          ls
+          ls lib
