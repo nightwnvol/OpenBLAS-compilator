@@ -18,7 +18,7 @@ jobs:
           ls "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\vc\"
           ls "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\vc\Auxiliary\"
           ls "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\vc\Auxiliary\Build\"
-          C:\Miniconda\shell\condabin\conda-hook.ps1
+          & 'C:\Miniconda\shell\condabin\conda-hook.ps1'
           conda update -n base conda
           conda config --add channels conda-forge
           conda install -y cmake flang clangdev perl libflang ninja
