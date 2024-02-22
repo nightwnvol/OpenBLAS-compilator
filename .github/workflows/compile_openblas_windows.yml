@@ -11,7 +11,6 @@ jobs:
         run: |
           Import-Module 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Microsoft.VisualStudio.DevShell.dll'
           Enter-VsDevShell -VsInstallPath 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise' -DevCmdArguments '-arch=x64' -StartInPath 'C:\'
-          cat C:\Miniconda\shell\condabin\conda-hook.ps1
           cd 'C:\Miniconda\shell\condabin'
           .\conda-hook.ps1
           conda update -n base conda
@@ -31,7 +30,7 @@ jobs:
           echo $env:CPATH
           mkdir build
           cd build
-          cmake .. -G "Ninja" -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_C_COMPILER=clang-cl -DCMAKE_Fortran_COMPILER=flang -DCMAKE_MT=mt -DBUILD_WITHOUT_LAPACK=no -DNOFORTRAN=0 -DDYNAMIC_ARCH=ON -DCMAKE_BUILD_TYPE=Release
+          cmake .. -G "Ninja" -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_C_COMPILER=clang-cl -DCMAKE_Fortran_COMPILER=flang-new -DCMAKE_MT=mt -DBUILD_WITHOUT_LAPACK=no -DNOFORTRAN=0 -DDYNAMIC_ARCH=ON -DCMAKE_BUILD_TYPE=Release
           cmake --build . --config Release
           ls
           ls lib
