@@ -20,6 +20,7 @@ jobs:
           cd C:\
           git clone https://github.com/OpenMathLib/OpenBLAS.git
           cd OpenBLAS
+          echo $env:LIB
           $env:LIB = "$env:CONDA_PREFIX\Library\lib;$env:LIB"
           $env:CPATH = "$env:CONDA_PREFIX\Library\include;$env:CPATH"
           mkdir build
