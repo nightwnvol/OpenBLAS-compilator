@@ -9,7 +9,6 @@ jobs:
       - name: Compile
         continue-on-error: true
         run: |
-          winget install --id Anaconda.Miniconda3
           ls $env:CONDA
           conda update -n base conda
           conda config --add channels conda-forge
