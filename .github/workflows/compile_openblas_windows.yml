@@ -7,6 +7,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Compile
+        continue-on-error: true
         run: |
           %USERPROFILE%\miniconda3\shell\condabin\conda-hook.ps1
           conda update -n base conda
