@@ -9,9 +9,9 @@ jobs:
       - name: Compile
         continue-on-error: true
         run: |
-          ls $env:CONDA\shell
-          ls $env:CONDA\shell\condabin
-          $env:CONDA\shell\condabin\conda-hook.ps1
+          ls C:\Miniconda\shell
+          ls C:\Miniconda\shell\condabin
+          C:\Miniconda\shell\condabin\conda-hook.ps1
           conda update -n base conda
           conda config --add channels conda-forge
           conda install -y cmake flang clangdev perl libflang ninja
