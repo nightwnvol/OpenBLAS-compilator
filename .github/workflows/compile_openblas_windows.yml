@@ -9,6 +9,8 @@ jobs:
       - name: Compile
         continue-on-error: true
         run: |
+          ls C:\MiniConda\Library\lib
+          ls C:\MiniConda\Library\include
           & 'C:\Miniconda\shell\condabin\conda-hook.ps1'
           conda update -n base conda
           conda config --add channels conda-forge
