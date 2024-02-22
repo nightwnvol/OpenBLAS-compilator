@@ -1,0 +1,25 @@
+name: Compile OpenBLAS on Windows
+run-name: Compile OpenBLAS on Windows - ${{ github.sha }}
+on: workflow_dispatch
+jobs:
+  compile:
+    name: Compile OpenBLAS
+    runs-on: windows-latest
+    steps:
+      - name: Compile
+        run: |
+          %USERPROFILE%\miniconda3\shell\condabin\conda-hook.ps1
+          conda update -n base conda
+          conda config --add channels conda-forge
+          conda install -y cmake flang clangdev perl libflang ninja
+          "c:\Program Files\Microsoft Visual Studio\2022\Preview\vc\Auxiliary\Build\vcvars64.bat"
+          git clone https://github.com/OpenMathLib/OpenBLAS.git
+          cd OpenBLAS
+          set "LIB=%CONDA_PREFIX%\Library\lib;%LIB%"
+          set "CPATH=%CONDA_PREFIX%\Library\include;%CPATH%"
+          mkdir build
+          cd build
+          cmake .. -G "Ninja" -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_C_COMPILER=clang-cl -DCMAKE_Fortran_COMPILER=flang -DCMAKE_MT=mt -DBUILD_WITHOUT_LAPACK=no -DNOFORTRAN=0 -DDYNAMIC_ARCH=ON -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --config Release
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
