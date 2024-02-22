@@ -9,20 +9,24 @@ jobs:
       - name: Compile
         continue-on-error: true
         run: |
+          Import-Module 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Microsoft.VisualStudio.DevShell.dll'
+          Enter-VsDevShell -VsInstallPath 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise' -DevCmdArguments '-arch=x64' -StartInPath 'C:\'
           cd 'C:\Miniconda\shell\condabin'
           .\conda-hook.ps1
           conda update -n base conda
           conda config --add channels conda-forge
           conda install -y cmake flang clangdev perl libflang ninja
           conda activate
-          Import-Module 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Microsoft.VisualStudio.DevShell.dll'
-          Enter-VsDevShell -VsInstallPath 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise' -DevCmdArguments '-arch=x64' -StartInPath $pwd
           cd C:\
           git clone https://github.com/OpenMathLib/OpenBLAS.git
           cd OpenBLAS
+          echo $env:CONDA_PREFIX
           echo $env:LIB
+          echo $env:CPATH
           $env:LIB = "$env:CONDA_PREFIX\Library\lib;$env:LIB"
           $env:CPATH = "$env:CONDA_PREFIX\Library\include;$env:CPATH"
+          echo $env:LIB
+          echo $env:CPATH
           mkdir build
           cd build
           cmake .. -G "Ninja" -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_C_COMPILER=clang-cl -DCMAKE_Fortran_COMPILER=flang -DCMAKE_MT=mt -DBUILD_WITHOUT_LAPACK=no -DNOFORTRAN=0 -DDYNAMIC_ARCH=ON -DCMAKE_BUILD_TYPE=Release
