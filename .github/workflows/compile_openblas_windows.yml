@@ -9,7 +9,7 @@ jobs:
       - name: Compile
         continue-on-error: true
         run: |
-          %USERPROFILE%\miniconda3\shell\condabin\conda-hook.ps1
+          $env:USERPROFILE\miniconda3\shell\condabin\conda-hook.ps1
           conda update -n base conda
           conda config --add channels conda-forge
           conda install -y cmake flang clangdev perl libflang ninja
