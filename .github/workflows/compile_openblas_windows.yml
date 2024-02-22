@@ -19,6 +19,7 @@ jobs:
           conda install -y cmake flang clangdev perl libflang ninja
           "C:\Program Files\Microsoft Visual Studio\2022\Preview\vc\Auxiliary\Build\vcvars64.bat"
           vcvarsall x64
+          link
           git clone https://github.com/OpenMathLib/OpenBLAS.git
           cd OpenBLAS
           echo $env:CONDA_PREFIX
