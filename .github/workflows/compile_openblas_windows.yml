@@ -18,9 +18,7 @@ jobs:
           conda config --add channels conda-forge
           conda install -y cmake flang clangdev perl libflang ninja
           conda activate
-          ls C:\Miniconda\Library\lib
-          ls C:\Miniconda\Library\include
-          ls C:\Miniconda\Library\lib\bin
+          ls C:\Miniconda\Library\bin
           cd C:\
           git clone https://github.com/OpenMathLib/OpenBLAS.git
           cd OpenBLAS
