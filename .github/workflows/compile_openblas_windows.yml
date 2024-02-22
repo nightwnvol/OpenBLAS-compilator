@@ -11,7 +11,6 @@ jobs:
         run: |
           winget install --id Anaconda.Miniconda3
           ls $env:CONDA
-          $env:CONDA\miniconda3\shell\condabin\conda-hook.ps1
           conda update -n base conda
           conda config --add channels conda-forge
           conda install -y cmake flang clangdev perl libflang ninja
