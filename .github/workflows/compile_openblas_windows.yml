@@ -18,7 +18,7 @@ jobs:
           conda install -y cmake flang clangdev perl libflang ninja
           conda activate
           cd C:\
-          git clone https://github.com/OpenMathLib/OpenBLAS.git
+          git clone -b release-0.3.0 https://github.com/OpenMathLib/OpenBLAS.git
           cd OpenBLAS
           $env:LIB = "$env:CONDA_PREFIX\Library\lib;$env:LIB"
           $env:CPATH = "$env:CONDA_PREFIX\Library\include;$env:CPATH"
